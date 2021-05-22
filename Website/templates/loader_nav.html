@@ -1,0 +1,277 @@
+
+{% load static %}
+{% block css %}
+
+
+<style>
+
+
+	@media (min-width:760px) {
+		.logo-img a img{
+			width: 200px;
+			height:100px;
+			position:relative;
+			z-index: 4;
+		}
+		.nav-container img{
+			width: 50px;
+			height:30px;
+			position:absolute;
+			z-index: 100;
+			margin-top: 18px;
+			margin-left: 30px;
+
+
+		}
+	}
+	@media (max-width:769px) {
+		.logo-img a img {
+			width: 150px;
+			height: 80px;
+
+
+		}
+
+		.nav-container img {
+			display: none;
+			z-index:-99999;
+
+
+		}
+	}
+	.middel-part__block .logo a{
+		padding: 2px;
+	}
+
+	@media (max-width:1280px) {
+		.nav-container img {
+			width: 50px;
+			height: 30px;
+			position: absolute;
+			z-index: 100;
+			margin-top: 14px;
+			margin-left:0px;
+		}
+
+	}
+	#logo{
+		visibility:hidden;
+	}
+
+
+</style>
+
+
+{% endblock %}
+
+		<!--loader-->
+		<div id="preloader">
+			<div class="sk-circle">
+				<div class="sk-circle1 sk-child"></div>
+				<div class="sk-circle2 sk-child"></div>
+				<div class="sk-circle3 sk-child"></div>
+				<div class="sk-circle4 sk-child"></div>
+				<div class="sk-circle5 sk-child"></div>
+				<div class="sk-circle6 sk-child"></div>
+				<div class="sk-circle7 sk-child"></div>
+				<div class="sk-circle8 sk-child"></div>
+				<div class="sk-circle9 sk-child"></div>
+				<div class="sk-circle10 sk-child"></div>
+				<div class="sk-circle11 sk-child"></div>
+				<div class="sk-circle12 sk-child"></div>
+			</div>
+		</div>
+
+		<!--loader-->
+
+		<!-- HEADER -->
+		<header>
+			<div class="top-part__block">
+				<div class="search__box-block">
+					<div class="container">
+						<input type="text" id="search" class="input-sm form-full" placeholder="Search Now">
+						<a href="#!" class="search__close-btn"> <i class="fa fa-times" aria-hidden="true"></i> </a>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-7">
+							<p>
+								<i><b>We Source Quality, We Make Quality, We Delivery Quality</b></i>
+							</p>
+						</div>
+						<div class="col-sm-5">
+							<div class="social-link__block text-right">
+								{#Social Links#}
+                                {% for link in links %}
+								<a href="{{ link.facebook_link }}" class="facebook"> <i class="fa fa-facebook"></i> </a>
+								<a href="{{ link.googleplus_link }}" class="google-plus"> <i class="fa fa-google-plus"></i></a>
+								<a href="{{ link.twitter_link }}" class="twitter"> <i class="fa fa-twitter"></i> </a>
+								<a href="{{ link.linkedin_link }}" class="linkedin"> <i class="fa fa-linkedin"></i> </a>
+								{#Social Links#}
+                                {% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="middel-part__block">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-3 logo col-md-12 d-flex align-items-center logo-img" >
+
+							<a href="{% url 'home' %}"> <img src="{% static 'images/logo.png'%}" alt="Logo" class="pt-2 pb-2"> </a>
+
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle hidden-lg-up" data-toggle="collapse" data-target="#navbar-menu">
+									<i class="fa fa-bars"></i>
+								</button>
+
+							</div>
+						</div>
+
+						<div class="col-lg-9 col-md-12">
+							<div class="top-info__block text-right">
+								<ul>
+									<li>
+										<i class="fa fa-map-marker"></i>
+										{% for p in data  %}
+										<p>
+											{{p.address1}}
+											<span> {{p.address2}}</span>
+										</p>
+										
+									</li>
+									<li>
+										<i class="fa fa-phone"></i>
+										<p>
+											Call Us
+											<span> {{p.cell}}</span>
+										</p>
+									</li>
+									<li>
+										<i class="fa fa-envelope" aria-hidden="true"></i>
+										<p>
+											Mail Us
+											<span> <a href="mailto:{{ p.email }}">{{p.email}}</a> </span>
+										</p>
+										{% endfor %}
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="main_nav stricky-header__top navbar-toggleable-md nav-container">
+				<img src="{% static 'images/logo.png'%}" alt="Logo" id="logo">
+
+				<nav class="navbar navbar-default navbar-sticky bootsnav">
+					<div class="container">
+
+						<!-- Start Header Navigation -->
+
+						<!-- End Header Navigation -->
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse" id="navbar-menu">
+
+							<ul class="nav navbar-nav mobile-menu d-flex justify-content-between ">
+
+
+
+								<li>
+									<a href="{% url 'home' %}">Home</a>
+                                </li>
+                                <li>
+                                    <a href="#!" class="dropdown-toggle">About</a>
+                                    <span class="submenu"></span>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="{% url 'about' %}">About</a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'catalog' %}">catalog</a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'career' %}">career</a>
+                                            {#											career URL#}
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'partnerships' %}">partnerships</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="{% url 'products' %}">Products</a>
+                                </li>
+
+                                <li>
+                                    <a href="{% url 'brands' %}">Brands</a>
+
+                                </li>
+
+                                <li>
+                                    <a href="{% url 'NewsList' %}" class="dropdown">News & Events</a>
+
+                                </li>
+
+                                <li>
+                                    <a href="javascript:avoid(0);" class="dropdown-toggle">Investment</a>
+                                    <span class="submenu"></span>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="{% url 'about_investment' %}">About Investment</a>
+                                            {#	                                        about URL#}
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'investment_policy' %}">Investment Policy</a>
+                                            {#	                                        Trams and conditions URL#}
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'investor_req' %}">Investor Request</a>
+                                            {#											investor request URL#}
+                                        </li>
+                                        {% if user.is_authenticated %}
+                                        
+                                             <li>
+                                            <a href="{% url 'p_home' %}">Investor Panel</a>
+                                            {#											login Url#}
+                                        </li>
+
+	                                        {% else %}
+                                             <li>
+                                            <a href="{% url 'login' %}">Investor login</a>
+                                            {#											login Url#}
+                                        </li>
+
+	                                    {% endif %}
+
+{#                                        <li>#}
+{#                                            <a href="{% url 'testimonial' %}">Testimonials</a>#}
+                                            {#                                            Testimonials URL#}
+{#                                        </li>#}
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-toggle">Shop</a>
+                                    <span class="submenu"></span>
+                                    <!-- Nav Dropdown -->
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="#">Coming Soon....</a>{#	shop URL#}
+                                        </li>
+
+                                    </ul>
+                                    <!-- End Nav Dropdown -->
+                                </li>
+                                <li>
+                                    <a href="{% url 'contact' %}">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+						<!--navbar-collapse -->
+					</div>
+				</nav>
+			</div>
+		</header>
+
